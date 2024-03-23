@@ -14,14 +14,14 @@ app.listen(port,() => {
 app.use(bodyparser.urlencoded({extended: true}));
 
 app.use("/public",express.static(process.cwd() + "/public"));
-// API1  afficher index
+// // API1  afficher index
 app.get("/", (req, res) => {
     res.sendFile(process.cwd() + "/views/index.html");
     });
-// API2 git all posts
+// // API2 git all posts
     app.get("/posts", (req, res) => {
         res.json(db);});
-// API3 get post by id
+// // API3 get post by id
         app.get("/posts/:id", (req, res) => {
             let id = req.params.id;
             let post = db.find((post) => post.id == id);
@@ -31,17 +31,17 @@ app.get("/", (req, res) => {
             res. json(post);
             }
             });
-// Api5 show blog post form description(create)
+// // Api5 show blog post form description(create)
             app.get("/postform", (req, res) => {
                 res. sendFile("views/postform.html", { root:__dirname});});
 
-// API 6 update form
+// // API 6 update form
 app.get("/updateform", (req, res) => {
     res. sendFile("views/updateform.html", { root :__dirname });
     
     });
 
-// API9
+// // API9
 app. post("/updatepost", (req, res) => {
     let id = req.body.id;
     let post = db.find((post) => post.id == id);
@@ -64,7 +64,7 @@ app. post("/updatepost", (req, res) => {
 });
     }
 });
-// API10
+// // API10
 app.get("/deletepost/:id", (req, res) => {
     let id = req.params.id;
     let post = db.find((post) => post.id == id);
